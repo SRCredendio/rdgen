@@ -93,8 +93,8 @@ def generator_view(request):
                 appname = "rustdesk"
             myuuid = str(uuid.uuid4())
             protocol = _settings.PROTOCOL
-            host = request.get_host()
-            full_url = f"{protocol}://{host}"
+            host = request.get_host().split(':')[0]
+            full_url = f"{protocol}://{host}:8001"
             try:
                 iconfile = form.cleaned_data.get('iconfile')
                 if not iconfile:
