@@ -82,7 +82,7 @@ jobs:
             try:
               print(f"Downloading secrets (Attempt {attempt + 1})...")
               r = requests.get('${{ fromJson(inputs.zip_url).url }}/get_zip?filename=${{ fromJson(inputs.zip_url).file }}', timeout=60)
-             break
+              break
             except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
               if attempt < 4:
                 print(f"Timeout/Error occurred: {e}. Retrying in 5 seconds...")
